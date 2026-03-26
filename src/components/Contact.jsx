@@ -28,7 +28,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Opens mail client pre-filled
     const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
     const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
     window.open(`mailto:kit27.am20@gmail.com?subject=${subject}&body=${body}`);
@@ -39,12 +38,12 @@ const Contact = () => {
   return (
     <section id="contact" className="section-padding bg-[#0B0F0E]">
       <div className="container-max">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — CTA */}
           <div>
-            <div className="reveal mb-10">
+            <div className="reveal mb-8 md:mb-10">
               <p className="section-label">Get In Touch</p>
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#EDEDED] leading-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#EDEDED] leading-tight mb-4 sm:mb-6">
                 Let's <span className="text-[#A3FF12]">Connect</span>
               </h2>
               <p className="text-[#9CA3AF] text-sm leading-relaxed max-w-md">
@@ -53,7 +52,7 @@ const Contact = () => {
             </div>
 
             {/* Email */}
-            <div className="reveal reveal-delay-1 mb-10">
+            <div className="reveal reveal-delay-1 mb-8">
               <a
                 href="mailto:kit27.am20@gmail.com"
                 className="group inline-flex items-center gap-3 text-[#EDEDED] hover:text-[#A3FF12] transition-colors duration-200"
@@ -63,7 +62,7 @@ const Contact = () => {
                 <div className="w-10 h-10 rounded-xl bg-[#A3FF12]/10 border border-[#A3FF12]/20 flex items-center justify-center shrink-0 group-hover:bg-[#A3FF12]/15 transition-colors">
                   <Mail className="w-4 h-4 text-[#A3FF12]" strokeWidth={1.5} />
                 </div>
-                <span className="text-sm font-medium">kit27.am20@gmail.com</span>
+                <span className="text-sm font-medium break-all">kit27.am20@gmail.com</span>
               </a>
             </div>
 
@@ -96,7 +95,7 @@ const Contact = () => {
 
           {/* Right — Contact form */}
           <div className="reveal reveal-delay-2">
-            <form onSubmit={handleSubmit} className="card-glass p-8 space-y-5">
+            <form onSubmit={handleSubmit} className="card-glass p-6 sm:p-8 space-y-4 sm:space-y-5">
               <div>
                 <label className="text-xs font-medium text-[#9CA3AF] mb-2 block">Your Name</label>
                 <input
@@ -106,7 +105,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="John Doe"
-                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200"
+                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3.5 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200"
                 />
               </div>
               <div>
@@ -118,7 +117,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="john@example.com"
-                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200"
+                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3.5 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200"
                 />
               </div>
               <div>
@@ -130,18 +129,16 @@ const Contact = () => {
                   required
                   rows={5}
                   placeholder="Tell me about your project or opportunity..."
-                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200 resize-none"
+                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3.5 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200 resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#A3FF12] text-[#0B0F0E] font-semibold text-sm rounded-xl hover:bg-[#b8ff3d] transition-all duration-200 hover:scale-[1.02] active:scale-100"
+                className="w-full flex items-center justify-center gap-2 py-4 sm:py-3.5 bg-[#A3FF12] text-[#0B0F0E] font-semibold text-sm rounded-xl hover:bg-[#b8ff3d] transition-all duration-200 hover:scale-[1.02] active:scale-100"
                 onMouseEnter={() => handleHover(true)}
                 onMouseLeave={() => handleHover(false)}
               >
-                {sent ? (
-                  'Opening mail client...'
-                ) : (
+                {sent ? 'Opening mail client...' : (
                   <>
                     Send Message
                     <Send className="w-4 h-4" strokeWidth={1.5} />
