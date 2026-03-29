@@ -9,7 +9,7 @@ const About = () => {
           <div>
             <div className="reveal mb-8 md:mb-10">
               <p className="section-label">About Me</p>
-              <h2 className="text-3xl sm:text-4xl sm:text-5xl font-bold text-[#EDEDED] leading-tight mb-0">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#EDEDED] leading-tight mb-0">
                 Building the future,<br />
                 <span className="text-[#A3FF12]">one model at a time.</span>
               </h2>
@@ -43,22 +43,22 @@ const About = () => {
                 { value: '2', label: 'Internships' },
               ].map((stat, i) => (
                 <div key={i} className="text-center md:text-left">
-                  <div className="text-xl sm:text-2xl font-bold text-[#A3FF12]">{stat.value}</div>
+                  <div className="text-xl sm:text-2xl font-bold text-[#A3FF12] font-display">{stat.value}</div>
                   <div className="text-xs text-[#9CA3AF] mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right — Terminal block (shown on md+) */}
+          {/* Right — Terminal block */}
           <div className="reveal reveal-delay-1 hidden md:block">
-            <div className="card-glass rounded-2xl overflow-hidden border-[#1F2622]">
+            <div className="card-glass rounded-xl overflow-hidden border-[#1F2622]">
               {/* Terminal header */}
-              <div className="flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 border-b border-[#1F2622] bg-[#141918]">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-                <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-                <span className="ml-3 text-xs text-[#9CA3AF]/50 font-mono">giribalan@dev ~ %</span>
+              <div className="flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 border-b border-[#1F2622] bg-[#0f1310]">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                <span className="ml-3 text-xs text-[#9CA3AF]/40 font-mono">giribalan@dev ~ %</span>
               </div>
 
               {/* Terminal body */}
@@ -77,15 +77,15 @@ const About = () => {
                   <span className="text-[#1F2622]">{'{'}</span><br />
                   <span className="pl-4 text-[#7C8AFF]">"languages"</span>
                   <span className="text-[#9CA3AF]">: </span>
-                  <span className="text-[#A3FF12]/80">["Python", "JavaScript", "Java"]</span>
+                  <span className="text-[#A3FF12]/75">["Python", "JavaScript", "Java"]</span>
                   <span className="text-[#9CA3AF]">,</span><br />
                   <span className="pl-4 text-[#7C8AFF]">"ml_stack"</span>
                   <span className="text-[#9CA3AF]">: </span>
-                  <span className="text-[#A3FF12]/80">["TensorFlow", "Keras"]</span>
+                  <span className="text-[#A3FF12]/75">["TensorFlow", "Keras"]</span>
                   <span className="text-[#9CA3AF]">,</span><br />
                   <span className="pl-4 text-[#7C8AFF]">"web"</span>
                   <span className="text-[#9CA3AF]">: </span>
-                  <span className="text-[#A3FF12]/80">["React", "Flask"]</span><br />
+                  <span className="text-[#A3FF12]/75">["React", "Flask"]</span><br />
                   <span className="text-[#1F2622]">{'}'}</span>
                 </div>
 

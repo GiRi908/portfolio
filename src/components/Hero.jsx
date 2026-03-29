@@ -15,11 +15,13 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-start relative overflow-hidden px-4 sm:px-6 lg:px-8"
     >
-      {/* Gradient blob background */}
+      {/* Gradient blob background — toned down, more natural */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[#0B0F0E]" />
-        <div className="absolute bottom-[15%] right-[8%] w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-[#A3FF12]/8 blur-[100px] sm:blur-[140px] animate-float" />
-        <div className="absolute top-[10%] left-[5%] w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-full bg-[#7C8AFF]/6 blur-[80px] sm:blur-[120px] animate-float" style={{ animationDelay: '5s' }} />
+        {/* Main blob — slightly offset from corner */}
+        <div className="absolute bottom-[12%] right-[5%] w-[220px] h-[220px] sm:w-[360px] sm:h-[360px] lg:w-[500px] lg:h-[500px] rounded-full bg-[#A3FF12]/6 blur-[90px] sm:blur-[120px] animate-float" />
+        {/* Secondary blob — top left, softer */}
+        <div className="absolute top-[8%] left-[2%] w-[160px] h-[160px] sm:w-[260px] sm:h-[260px] rounded-full bg-[#7C8AFF]/5 blur-[70px] sm:blur-[100px] animate-float" style={{ animationDelay: '7s' }} />
       </div>
 
       {/* LightRays WebGL */}
@@ -40,40 +42,40 @@ const Hero = () => {
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container-max w-full pt-28 sm:pt-24 pb-16">
-        {/* Label */}
-        <div className="reveal mb-5 sm:mb-6">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#A3FF12]/20 bg-[#A3FF12]/5 text-[#A3FF12] text-xs font-semibold tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#A3FF12] animate-pulse" />
-            Available for opportunities
+      {/* Content — left-aligned with slight intentional top offset */}
+      <div className="relative z-10 container-max w-full pt-32 sm:pt-28 pb-20">
+        {/* Main heading — SplitText: each word fades in with stagger */}
+        <h1 className="font-display text-[2.8rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-[86px] xl:text-[98px] font-bold leading-[0.93] mb-7 sm:mb-9">
+          <span className="block text-[#EDEDED]">
+            {'AI & ML'.split(' ').map((word, i) => (
+              <span key={i} className="split-word mr-[0.25em]" style={{ animationDelay: `${i * 120}ms` }}>{word}</span>
+            ))}
           </span>
-        </div>
-
-        {/* Main heading */}
-        <h1 className="reveal reveal-delay-1 text-[2.6rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[100px] font-bold leading-[0.95] tracking-tight mb-6 sm:mb-8">
-          <span className="block text-[#EDEDED]">AI &amp; ML</span>
-          <span className="block text-[#EDEDED]">Engineer</span>
-          <span className="block mt-2">
-            <span className="text-[#A3FF12]">Giribalan</span>
-            <span className="text-[#EDEDED]">.</span>
+          <span className="block text-[#EDEDED] pl-px sm:pl-1">
+            {'Engineer'.split(' ').map((word, i) => (
+              <span key={i} className="split-word" style={{ animationDelay: `${240 + i * 120}ms` }}>{word}</span>
+            ))}
+          </span>
+          <span className="block mt-2.5">
+            <span className="split-word text-[#A3FF12]" style={{ animationDelay: '360ms' }}>Giribalan</span>
+            <span className="split-word text-[#EDEDED]" style={{ animationDelay: '440ms' }}>.</span>
           </span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="reveal reveal-delay-2 text-sm sm:text-base lg:text-lg text-[#9CA3AF] font-light max-w-xl mb-10 sm:mb-12 leading-relaxed">
+        {/* Subtitle — slightly nudged left for natural feel */}
+        <p className="reveal reveal-delay-2 text-sm sm:text-[15px] lg:text-base text-[#9CA3AF] font-light max-w-[420px] mb-11 sm:mb-13 leading-[1.75] -ml-px">
           Crafting intelligent AI solutions and modern web applications that solve real-world problems.
           <br className="hidden sm:block" />
-          <span className="text-[#EDEDED]/70"> Problem Solver · Developer · Innovator.</span>
+          <span className="text-[#EDEDED]/65 mt-1 block sm:inline">Problem Solver · Developer · Innovator.</span>
         </p>
 
-        {/* CTA Buttons — full width on mobile */}
+        {/* CTA Buttons */}
         <div className="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-start">
           <button
             onClick={() => scrollTo('contact')}
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
-            className="group flex items-center justify-center gap-2.5 px-7 py-4 sm:py-3.5 bg-[#A3FF12] text-[#0B0F0E] font-semibold text-sm rounded-full hover:bg-[#b8ff3d] transition-all duration-200 hover:scale-105 active:scale-100"
+            className="glow-btn group flex items-center justify-center gap-2.5 px-7 py-4 sm:py-3.5 bg-[#A3FF12] text-[#0B0F0E] font-semibold text-sm rounded-full hover:bg-[#b3ff40] hover:-translate-y-0.5 active:translate-y-0"
           >
             Reach Out
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -83,19 +85,19 @@ const Hero = () => {
             onClick={() => scrollTo('projects')}
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
-            className="group flex items-center justify-center gap-2.5 px-7 py-4 sm:py-3.5 border border-[#1F2622] text-[#EDEDED] font-semibold text-sm rounded-full hover:border-[#A3FF12]/40 hover:bg-[#A3FF12]/5 transition-all duration-200"
+            className="group flex items-center justify-center gap-2.5 px-7 py-4 sm:py-3.5 border border-[#1F2622] text-[#EDEDED] font-semibold text-sm rounded-full hover:border-[#A3FF12]/35 hover:bg-[#A3FF12]/5 transition-all duration-250"
           >
             View Work
-            <ExternalLink className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" />
+            <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-90 transition-opacity" />
           </button>
         </div>
 
-        {/* Scroll indicator — hide on mobile to save space */}
-        <div className="reveal reveal-delay-4 mt-16 sm:mt-20 hidden sm:flex items-center gap-3 text-[#9CA3AF] text-xs">
-          <div className="w-6 h-10 border border-[#1F2622] rounded-full flex items-start justify-center pt-2">
-            <div className="w-1 h-2 bg-[#A3FF12] rounded-full animate-bounce" />
+        {/* Scroll indicator */}
+        <div className="reveal reveal-delay-4 mt-16 sm:mt-20 hidden sm:flex items-center gap-3 text-[#9CA3AF]/60 text-xs">
+          <div className="w-5 h-9 border border-[#1F2622] rounded-full flex items-start justify-center pt-1.5">
+            <div className="w-0.5 h-2 bg-[#A3FF12] rounded-full animate-bounce" />
           </div>
-          <span className="tracking-widest uppercase">Scroll</span>
+          <span className="tracking-[0.2em] uppercase text-[10px]">Scroll</span>
         </div>
       </div>
     </section>

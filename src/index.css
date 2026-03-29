@@ -19,6 +19,12 @@
   * {
     box-sizing: border-box;
   }
+
+  /* Headings use Space Grotesk for editorial personality */
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
 }
 
 @layer utilities {
@@ -31,45 +37,59 @@
   }
 
   .section-label {
-    @apply text-xs font-semibold tracking-[0.2em] uppercase text-[#A3FF12] mb-4;
+    @apply text-xs font-semibold tracking-[0.18em] uppercase text-[#A3FF12] mb-3;
   }
 
   .section-title {
     @apply text-4xl sm:text-5xl font-bold text-[#EDEDED] mb-4;
+    /* Slightly tighter tracking for editorial feel */
+    letter-spacing: -0.025em;
   }
 
+  /* Slightly less rounded = less template-y */
   .card-glass {
-    @apply bg-[#141918] border border-[#1F2622] rounded-2xl transition-all duration-200;
+    @apply bg-[#141918] border border-[#1F2622] rounded-xl transition-all duration-300;
   }
 
   .skill-tag {
     @apply px-3 py-1 text-xs font-medium rounded-full bg-[#7C8AFF]/10 text-[#7C8AFF] border border-[#7C8AFF]/20;
   }
+
 }
 
-/* Marquee fade mask */
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 15%,
-    black 85%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 15%,
-    black 85%,
-    transparent 100%
-  );
+/* Mobile-first horizontal scrollable skills strip — outside @layer so pseudo-selectors work */
+.skills-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.skills-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.skills-scroll > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* Desktop marquee keyframe — unique name avoids any collision */
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Scroll-triggered fade-up animation */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(20px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {
@@ -77,8 +97,75 @@
   transform: translateY(0);
 }
 
-/* Stagger children */
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+/* Natural stagger rhythm — slightly uneven for human feel */
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.18s; }
+.reveal-delay-3 { transition-delay: 0.30s; }
+.reveal-delay-4 { transition-delay: 0.44s; }
+
+/* ─────────────────────────────────────────────
+   React Bits: SplitText — hero word fade-in
+   Opacity only (no translate) — subtle, human
+───────────────────────────────────────────── */
+@keyframes wordIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.split-word {
+  display: inline-block;
+  opacity: 0;
+  animation: wordIn 0.45s ease forwards;
+}
+
+/* ─────────────────────────────────────────────
+   React Bits: Glow Button — faint accent shadow
+   Shadow stays very low opacity (0.15) so it
+   never screams "neon". Feels premium, not demo.
+───────────────────────────────────────────── */
+.glow-btn {
+  transition: box-shadow 250ms ease, transform 200ms ease;
+}
+.glow-btn:hover {
+  box-shadow: 0 0 16px rgba(163, 255, 18, 0.15);
+}
+.glow-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 8px rgba(163, 255, 18, 0.10);
+}
+
+/* ─────────────────────────────────────────────
+   React Bits: TiltCard — disable on touch
+   Respects user's hover capability
+───────────────────────────────────────────── */
+@media (hover: none) {
+  .tilt-card {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   React Bits: Animated Input — underline reveal
+   Green line slides in from left on focus.
+   Much more refined than a raw border flash.
+───────────────────────────────────────────── */
+.animated-input {
+  position: relative;
+}
+.animated-input::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #A3FF12;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms ease;
+  border-radius: 0 0 4px 4px;
+}
+.animated-input:focus-within::after {
+  transform: scaleX(1);
+}

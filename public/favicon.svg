@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Neon green background tile -->
+  <rect width="64" height="64" rx="14" fill="#A3FF12"/>
+  <!-- Black "G" lettermark -->
+  <text
+    x="50%"
+    y="52%"
+    dominant-baseline="central"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="38"
+    font-weight="800"
+    fill="#0B0F0E"
+  >G</text>
+</svg>

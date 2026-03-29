@@ -35,31 +35,35 @@ const Contact = () => {
     setTimeout(() => setSent(false), 4000);
   };
 
+  const inputClass =
+    'w-full bg-[#0B0F0E] border border-[#1F2622] rounded-lg px-4 py-3.5 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/35 focus:outline-none focus:border-[#A3FF12]/40 focus:ring-1 focus:ring-[#A3FF12]/15 transition-all duration-200';
+
   return (
     <section id="contact" className="section-padding bg-[#0B0F0E]">
       <div className="container-max">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left — CTA */}
           <div>
             <div className="reveal mb-8 md:mb-10">
               <p className="section-label">Get In Touch</p>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#EDEDED] leading-tight mb-4 sm:mb-6">
-                Let's <span className="text-[#A3FF12]">Connect</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#EDEDED] leading-tight mb-4 sm:mb-5">
+                Let's{' '}
+                <span className="text-[#A3FF12]">Connect</span>
               </h2>
-              <p className="text-[#9CA3AF] text-sm leading-relaxed max-w-md">
+              <p className="text-[#9CA3AF] text-sm leading-relaxed max-w-sm">
                 I'm open to new opportunities, collaborations, or just a good conversation. Drop me a message and I'll get back to you.
               </p>
             </div>
 
             {/* Email */}
-            <div className="reveal reveal-delay-1 mb-8">
+            <div className="reveal reveal-delay-1 mb-7">
               <a
                 href="mailto:kit27.am20@gmail.com"
                 className="group inline-flex items-center gap-3 text-[#EDEDED] hover:text-[#A3FF12] transition-colors duration-200"
                 onMouseEnter={() => handleHover(true)}
                 onMouseLeave={() => handleHover(false)}
               >
-                <div className="w-10 h-10 rounded-xl bg-[#A3FF12]/10 border border-[#A3FF12]/20 flex items-center justify-center shrink-0 group-hover:bg-[#A3FF12]/15 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#A3FF12]/10 border border-[#A3FF12]/20 flex items-center justify-center shrink-0 group-hover:bg-[#A3FF12]/15 transition-colors duration-200">
                   <Mail className="w-4 h-4 text-[#A3FF12]" strokeWidth={1.5} />
                 </div>
                 <span className="text-sm font-medium break-all">kit27.am20@gmail.com</span>
@@ -80,11 +84,11 @@ const Contact = () => {
                     onMouseEnter={() => handleHover(true)}
                     onMouseLeave={() => handleHover(false)}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#141918] border border-[#1F2622] flex items-center justify-center shrink-0 group-hover:border-[#7C8AFF]/40 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-[#141918] border border-[#1F2622] flex items-center justify-center shrink-0 group-hover:border-[#7C8AFF]/40 transition-colors duration-200">
                       <Icon className="w-4 h-4" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <div className="text-xs text-[#9CA3AF]/50">{social.label}</div>
+                      <div className="text-[10px] text-[#9CA3AF]/45 tracking-wide">{social.label}</div>
                       <div className="text-sm font-medium text-[#EDEDED]">@{social.handle}</div>
                     </div>
                   </a>
@@ -96,7 +100,7 @@ const Contact = () => {
           {/* Right — Contact form */}
           <div className="reveal reveal-delay-2">
             <form onSubmit={handleSubmit} className="card-glass p-6 sm:p-8 space-y-4 sm:space-y-5">
-              <div>
+              <div className="animated-input">
                 <label className="text-xs font-medium text-[#9CA3AF] mb-2 block">Your Name</label>
                 <input
                   type="text"
@@ -104,11 +108,11 @@ const Contact = () => {
                   value={form.name}
                   onChange={handleChange}
                   required
-                  placeholder="John Doe"
-                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3.5 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200"
+                  placeholder="Your Name"
+                  className={inputClass}
                 />
               </div>
-              <div>
+              <div className="animated-input">
                 <label className="text-xs font-medium text-[#9CA3AF] mb-2 block">Email Address</label>
                 <input
                   type="email"
@@ -116,11 +120,11 @@ const Contact = () => {
                   value={form.email}
                   onChange={handleChange}
                   required
-                  placeholder="john@example.com"
-                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3.5 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200"
+                  placeholder="Your Email"
+                  className={inputClass}
                 />
               </div>
-              <div>
+              <div className="animated-input">
                 <label className="text-xs font-medium text-[#9CA3AF] mb-2 block">Message</label>
                 <textarea
                   name="message"
@@ -129,12 +133,12 @@ const Contact = () => {
                   required
                   rows={5}
                   placeholder="Tell me about your project or opportunity..."
-                  className="w-full bg-[#0B0F0E] border border-[#1F2622] rounded-xl px-4 py-3.5 text-sm text-[#EDEDED] placeholder-[#9CA3AF]/40 focus:outline-none focus:border-[#A3FF12]/40 transition-colors duration-200 resize-none"
+                  className={`${inputClass} resize-none`}
                 />
               </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 py-4 sm:py-3.5 bg-[#A3FF12] text-[#0B0F0E] font-semibold text-sm rounded-xl hover:bg-[#b8ff3d] transition-all duration-200 hover:scale-[1.02] active:scale-100"
+                className="w-full flex items-center justify-center gap-2 py-4 sm:py-3.5 bg-[#A3FF12] text-[#0B0F0E] font-semibold text-sm rounded-lg hover:bg-[#b3ff40] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                 onMouseEnter={() => handleHover(true)}
                 onMouseLeave={() => handleHover(false)}
               >
